@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,18 +33,16 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     items.add(CartItemEntity(ammount: 1, product: event.product));
 
     emit(Loaded(
-        cart: CartEntity(items: items), message: ADD_CART_SUCCESS_MESSAGE));
+        cart: CartEntity(items: sort(items)),
+        message: ADD_CART_SUCCESS_MESSAGE));
   }
 
   FutureOr<void> removeProduct(RemoveProduct event, emit) {
     final items = {...state.cart.items};
     if (items.contains(event.cartProduct)) {
-      final result = items
-          .where((cartProduct) => cartProduct != event.cartProduct)
-          .toSet();
-
+      items.remove(event.cartProduct);
       emit(Loaded(
-          cart: CartEntity(items: result),
+          cart: CartEntity(items: items),
           message: REMOVE_CART_SUCCESS_MESSAGE));
     } else {
       emit(state.copyWith(message: REMOVE_CART_FAILURE_MESSAGE));
@@ -54,12 +53,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     final items = {...state.cart.items};
     final cartProduct = event.cartProduct;
     if (items.contains(event.cartProduct)) {
-      final result = items.where((element) => element != cartProduct).toList();
+      final result = items.where((element) => element != cartProduct).toSet();
       result.add(
         cartProduct.copyWith(ammount: cartProduct.ammount + 1),
       );
-      result.sort((a, b) => a.product.name.compareTo(b.product.name));
-      emit(Loaded(cart: CartEntity(items: result.toSet())));
+
+      emit(Loaded(cart: CartEntity(items: sort(result))));
     }
   }
 
@@ -69,18 +68,25 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     if (items.contains(event.cartProduct)) {
       final result = items
           .where((element) => element.product != cartProduct.product)
-          .toList();
+          .toSet();
       result.add(
         cartProduct.copyWith(
             ammount: cartProduct.ammount <= 1 ? 1 : cartProduct.ammount - 1),
       );
-      result.sort((a, b) => a.product.name.compareTo(b.product.name));
 
-      emit(Loaded(cart: CartEntity(items: result.toSet())));
+      emit(Loaded(cart: CartEntity(items: sort(result))));
     }
   }
 
   FutureOr<void> checkout(Checkout event, emit) async {
     await printCartUsecase(cart: event.cartEntity);
+  }
+
+  Set<CartItemEntity> sort(Set<CartItemEntity> items) {
+    return SplayTreeSet.from(
+      items,
+      (CartItemEntity a, CartItemEntity b) =>
+          a.product.name.compareTo(b.product.name),
+    );
   }
 }

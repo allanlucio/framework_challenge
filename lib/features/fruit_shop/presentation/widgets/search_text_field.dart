@@ -18,6 +18,8 @@ class SearchTextField extends StatelessWidget {
       height: AppBar().preferredSize.height * 0.75,
       child: TextField(
         controller: _searchController,
+        autofocus: false,
+        
         onChanged: onChanged,
         decoration: InputDecoration(
           fillColor: Colors.white,

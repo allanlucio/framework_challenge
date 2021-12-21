@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
@@ -33,7 +34,7 @@ class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
   pw.Widget buildHeader(context) {
     return pw.Container(
       color: PdfColors.grey200,
-      height: 70,
+      height: 110,
       width: double.infinity,
       child: pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.center,
@@ -47,13 +48,42 @@ class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
           ),
           pw.Row(children: [
             pw.Text(
-              "Local: Shop Fruit",
+              "Estabelescimento: ",
               style: pw.TextStyle(
                 fontWeight: pw.FontWeight.bold,
-                fontSize: 21,
+                fontSize: 15,
+              ),
+            ),
+            pw.Text(
+              "Shop Fruit",
+              style: pw.TextStyle(
+                fontSize: 15,
               ),
             )
-          ])
+          ]),
+          pw.Row(children: [
+            pw.Text(
+              "Horário da emissão: ",
+              style: pw.TextStyle(
+                fontWeight: pw.FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            pw.Text(
+              "${DateFormat("dd/MM/yyyy HH:mm").format(DateTime.now())}",
+              style: pw.TextStyle(
+                fontSize: 15,
+              ),
+            )
+          ]),
+          pw.Spacer(),
+          pw.Text(
+            "Produtos",
+            style: pw.TextStyle(
+              fontSize: 22,
+              fontWeight: pw.FontWeight.bold,
+            ),
+          )
         ],
       ),
     );
@@ -85,7 +115,7 @@ class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
   }
 
   pw.Widget contentTable(pw.Context context, List<CartItemEntity> items) {
-    const headers = ["Nome", "Quantidade", "Valor unitário", "Total"];
+    const headers = ["Produto", "Quantidade", "Valor unitário", "Total"];
 
     return pw.Table.fromTextArray(
         cellAlignment: pw.Alignment.centerLeft,
