@@ -10,42 +10,11 @@ main() {
     price: 12.5,
     imageUrl: "imageUrl",
   );
-  final tCartItemEntity = CartItemEntity(ammount: 1, product: tManga);
+  final tCartItemEntity = CartItemEntity(ammount: 2, product: tManga);
 
-  group("incremmentAmmount", () {
-    setUp(() {
-      //
-    });
-
-    test("should add the ammount by one when called", () async {
-      expect(tCartItemEntity.ammount, 1);
-      tCartItemEntity.incremmentAmmount();
-      expect(tCartItemEntity.ammount, 2);
-      tCartItemEntity.incremmentAmmount();
-      expect(tCartItemEntity.ammount, 3);
-    });
-  });
-  group("decremmentAmmount", () {
-    late CartItemEntity tCartItem;
-    setUp(() {
-      tCartItem = CartItemEntity(ammount: 3, product: tManga);
-    });
-
-    test("should decrement the ammount by one when called", () async {
-      expect(tCartItem.ammount, 3);
-      tCartItem.decremmentAmmount();
-      expect(tCartItem.ammount, 2);
-    });
-    test(
-        "shouldnt decrement but when the ammount is one it shouldn be decrement anymore",
-        () async {
-      expect(tCartItem.ammount, 3);
-      tCartItem.decremmentAmmount();
-      expect(tCartItem.ammount, 2);
-      tCartItem.decremmentAmmount();
-      expect(tCartItem.ammount, 1);
-      tCartItem.decremmentAmmount();
-      expect(tCartItem.ammount, 1);
-    });
+  test(
+      "should be the total equal to 25 when the price is 12.5 and the ammount is 2",
+      () async {
+    expect(tCartItemEntity.total, 25);
   });
 }

@@ -56,7 +56,9 @@ class _CartPageState extends State<CartPage> {
               child: ElevatedButtonDS(
                 title: "Finalizar",
                 icon: Icons.check,
-                onPressed: () => null,
+                onPressed: () async {
+                  final file = await cartBloc.printCheckout();
+                },
                 buttomColor: Theme.of(context).colorScheme.primary,
               ))
         ],

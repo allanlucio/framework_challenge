@@ -6,6 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../domain/entities/cart_entity.dart';
 import '../../../domain/entities/cart_item_entity.dart';
 import '../../../domain/entities/product_entity.dart';
+import '../../pdf/pdf_generator.dart';
 
 part 'cart_bloc.freezed.dart';
 part 'cart_event.dart';
@@ -75,5 +76,11 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
       emit(Loaded(cart: CartEntity(items: result.toSet())));
     }
+  }
+
+  Future<void> printCheckout() async {
+    final generator = PDFGenerator();
+
+    await generator.generate();
   }
 }
