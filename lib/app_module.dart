@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'core/diacritics/diacritics.dart';
 import 'features/auth/auth_module.dart';
 import 'features/fruit_shop/domain/repositories/product_repository.dart';
 import 'features/fruit_shop/domain/services/print_cart_invoice_service.dart';
@@ -21,7 +22,9 @@ import 'pages/splash/splash_page.dart';
 class AppModule extends Module {
   @override
   List<Bind<Object>> get binds => [
-        Bind.lazySingleton<ProductDataSource>((i) => LocalProductDataSource()),
+        Bind.lazySingleton<Diacritic>((i) => DiacriticImpl()),
+        Bind.lazySingleton<ProductDataSource>(
+            (i) => LocalProductDataSource(diacritic: i())),
         Bind.lazySingleton<CartInvoiceDataSource>(
             (i) => CartInvoiceDataSourceImpl()),
         Bind.lazySingleton<ProductRepository>(

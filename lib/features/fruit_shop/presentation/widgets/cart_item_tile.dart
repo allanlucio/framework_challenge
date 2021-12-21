@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/extensions/double_extensions.dart';
-import '../../../../design_system/widgets/buttons/elevated_button_ds.dart';
+import '../../../../design_system/form/buttons/elevated_button_ds.dart';
 import '../../domain/entities/cart_item_entity.dart';
 import 'products_container.dart';
 

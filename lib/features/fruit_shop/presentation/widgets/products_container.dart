@@ -25,13 +25,17 @@ class ProductContainer extends StatelessWidget {
         height: height,
         color: Theme.of(context).colorScheme.background.withOpacity(0.5),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Container(
               height: height * 0.85,
               width: width,
-              child: Image.asset(
-                product.imageUrl,
-                fit: BoxFit.contain,
+              child: Hero(
+                tag: product.name,
+                child: Image.asset(
+                  product.imageUrl,
+                  fit: BoxFit.contain,
+                ),
               ),
             ),
             Text(

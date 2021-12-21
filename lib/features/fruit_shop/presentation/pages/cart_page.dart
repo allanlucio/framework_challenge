@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 import '../../../../core/extensions/double_extensions.dart';
-import '../../../../design_system/widgets/buttons/elevated_button_ds.dart';
-import '../../../../design_system/widgets/scaffold/fruit_shop_scaffold.dart';
+import '../../../../design_system/form/buttons/elevated_button_ds.dart';
+import '../../../../design_system/scaffold/fruit_shop_scaffold.dart';
 import '../../domain/entities/cart_entity.dart';
 import '../stores/cart/cart_bloc.dart';
 import '../widgets/cart_item_tile.dart';
