@@ -15,13 +15,13 @@ class SearchTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: AppBar().preferredSize.height * 0.75,
+      height: AppBar().preferredSize.height * 0.8,
       child: TextField(
         controller: _searchController,
         autofocus: false,
-        
         onChanged: onChanged,
         decoration: InputDecoration(
+          hintText: "Clique para pesquisar...",
           fillColor: Colors.white,
           prefixIcon: Icon(Icons.search),
           filled: true,

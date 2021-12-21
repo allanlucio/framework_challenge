@@ -31,7 +31,7 @@ class _HomePageState extends ModularState<HomePage, ProductsBloc> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.1,
+            width: MediaQuery.of(context).size.width * 0.08,
           ),
           Expanded(
             child: SearchTextField(
