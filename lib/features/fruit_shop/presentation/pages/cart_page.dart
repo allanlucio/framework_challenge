@@ -32,36 +32,36 @@ class _CartPageState extends State<CartPage> {
         "Carrinho",
         style: TextStyle(fontWeight: FontWeight.bold),
       )),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Flexible(
-            flex: 10,
-            child: BlocBuilder<CartBloc, CartState>(
-              bloc: cartBloc,
-              builder: (context, state) {
-                return state.when(
-                  loaded: (cart, message) {
-                    return CartList(
+      body: BlocBuilder<CartBloc, CartState>(
+        bloc: cartBloc,
+        builder: (context, state) {
+          return state.when(
+            loaded: (cart, message) {
+              return Column(
+                children: [
+                  Flexible(
+                    flex: 9,
+                    child: CartList(
                       cart: cart,
                       cartBloc: cartBloc,
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          Flexible(
-              flex: 1,
-              child: ElevatedButtonDS(
-                title: "Finalizar",
-                icon: Icons.check,
-                onPressed: () async {
-                  final file = await cartBloc.printCheckout();
-                },
-                buttomColor: Theme.of(context).colorScheme.primary,
-              ))
-        ],
+                    ),
+                  ),
+                  Flexible(
+                    flex: 1,
+                    child: ElevatedButtonDS(
+                      title: "Finalizar",
+                      icon: Icons.check,
+                      onPressed: () async {
+                        cartBloc.add(Checkout(cartEntity: cart));
+                      },
+                      buttomColor: Theme.of(context).colorScheme.primary,
+                    ),
+                  )
+                ],
+              );
+            },
+          );
+        },
       ),
     );
   }

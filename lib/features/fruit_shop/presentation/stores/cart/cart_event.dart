@@ -14,4 +14,7 @@ class CartEvent with _$CartEvent {
   const factory CartEvent.decrementAmmount({
     required CartItemEntity cartProduct,
   }) = DecrementAmmount;
+  const factory CartEvent.checkout({
+    required CartEntity cartEntity,
+  }) = Checkout;
 }

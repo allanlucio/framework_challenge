@@ -6,7 +6,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import '../../../domain/entities/cart_entity.dart';
 import '../../../domain/entities/cart_item_entity.dart';
 import '../../../domain/entities/product_entity.dart';
-import '../../pdf/pdf_generator.dart';
+import '../../../domain/usecases/search_products/print_cart_invoice_usecase.dart';
 
 part 'cart_bloc.freezed.dart';
 part 'cart_event.dart';
@@ -17,11 +17,13 @@ const REMOVE_CART_SUCCESS_MESSAGE = "Produto removido com sucesso";
 const REMOVE_CART_FAILURE_MESSAGE = "Produto não encontrado no carrinho";
 
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(const CartState.loaded()) {
+  final PrintCartInvoiceUsecase printCartUsecase;
+  CartBloc({required this.printCartUsecase}) : super(const CartState.loaded()) {
     on<AddProduct>(addProduct);
     on<RemoveProduct>(removeProduct);
     on<IncrementAmmount>(incrementAmmount);
     on<DecrementAmmount>(decrementAmmount);
+    on<Checkout>(checkout);
   }
 
   FutureOr<void> addProduct(AddProduct event, emit) {
@@ -78,9 +80,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  Future<void> printCheckout() async {
-    final generator = PDFGenerator();
-
-    await generator.generate();
+  FutureOr<void> checkout(Checkout event, emit) async {
+    await printCartUsecase(cart: event.cartEntity);
   }
 }

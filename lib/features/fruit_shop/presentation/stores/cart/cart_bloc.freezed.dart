@@ -40,6 +40,12 @@ class _$CartEventTearOff {
       cartProduct: cartProduct,
     );
   }
+
+  Checkout checkout({required CartEntity cartEntity}) {
+    return Checkout(
+      cartEntity: cartEntity,
+    );
+  }
 }
 
 /// @nodoc
@@ -53,6 +59,7 @@ mixin _$CartEvent {
     required TResult Function(CartItemEntity cartProduct) removeProduct,
     required TResult Function(CartItemEntity cartProduct) incrementAmmount,
     required TResult Function(CartItemEntity cartProduct) decrementAmmount,
+    required TResult Function(CartEntity cartEntity) checkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +68,7 @@ mixin _$CartEvent {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +77,7 @@ mixin _$CartEvent {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,6 +87,7 @@ mixin _$CartEvent {
     required TResult Function(RemoveProduct value) removeProduct,
     required TResult Function(IncrementAmmount value) incrementAmmount,
     required TResult Function(DecrementAmmount value) decrementAmmount,
+    required TResult Function(Checkout value) checkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -86,6 +96,7 @@ mixin _$CartEvent {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -94,6 +105,7 @@ mixin _$CartEvent {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -181,6 +193,7 @@ class _$AddProduct implements AddProduct {
     required TResult Function(CartItemEntity cartProduct) removeProduct,
     required TResult Function(CartItemEntity cartProduct) incrementAmmount,
     required TResult Function(CartItemEntity cartProduct) decrementAmmount,
+    required TResult Function(CartEntity cartEntity) checkout,
   }) {
     return addProduct(product);
   }
@@ -192,6 +205,7 @@ class _$AddProduct implements AddProduct {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
   }) {
     return addProduct?.call(product);
   }
@@ -203,6 +217,7 @@ class _$AddProduct implements AddProduct {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
     required TResult orElse(),
   }) {
     if (addProduct != null) {
@@ -218,6 +233,7 @@ class _$AddProduct implements AddProduct {
     required TResult Function(RemoveProduct value) removeProduct,
     required TResult Function(IncrementAmmount value) incrementAmmount,
     required TResult Function(DecrementAmmount value) decrementAmmount,
+    required TResult Function(Checkout value) checkout,
   }) {
     return addProduct(this);
   }
@@ -229,6 +245,7 @@ class _$AddProduct implements AddProduct {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
   }) {
     return addProduct?.call(this);
   }
@@ -240,6 +257,7 @@ class _$AddProduct implements AddProduct {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
     required TResult orElse(),
   }) {
     if (addProduct != null) {
@@ -327,6 +345,7 @@ class _$RemoveProduct implements RemoveProduct {
     required TResult Function(CartItemEntity cartProduct) removeProduct,
     required TResult Function(CartItemEntity cartProduct) incrementAmmount,
     required TResult Function(CartItemEntity cartProduct) decrementAmmount,
+    required TResult Function(CartEntity cartEntity) checkout,
   }) {
     return removeProduct(cartProduct);
   }
@@ -338,6 +357,7 @@ class _$RemoveProduct implements RemoveProduct {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
   }) {
     return removeProduct?.call(cartProduct);
   }
@@ -349,6 +369,7 @@ class _$RemoveProduct implements RemoveProduct {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
     required TResult orElse(),
   }) {
     if (removeProduct != null) {
@@ -364,6 +385,7 @@ class _$RemoveProduct implements RemoveProduct {
     required TResult Function(RemoveProduct value) removeProduct,
     required TResult Function(IncrementAmmount value) incrementAmmount,
     required TResult Function(DecrementAmmount value) decrementAmmount,
+    required TResult Function(Checkout value) checkout,
   }) {
     return removeProduct(this);
   }
@@ -375,6 +397,7 @@ class _$RemoveProduct implements RemoveProduct {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
   }) {
     return removeProduct?.call(this);
   }
@@ -386,6 +409,7 @@ class _$RemoveProduct implements RemoveProduct {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
     required TResult orElse(),
   }) {
     if (removeProduct != null) {
@@ -474,6 +498,7 @@ class _$IncrementAmmount implements IncrementAmmount {
     required TResult Function(CartItemEntity cartProduct) removeProduct,
     required TResult Function(CartItemEntity cartProduct) incrementAmmount,
     required TResult Function(CartItemEntity cartProduct) decrementAmmount,
+    required TResult Function(CartEntity cartEntity) checkout,
   }) {
     return incrementAmmount(cartProduct);
   }
@@ -485,6 +510,7 @@ class _$IncrementAmmount implements IncrementAmmount {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
   }) {
     return incrementAmmount?.call(cartProduct);
   }
@@ -496,6 +522,7 @@ class _$IncrementAmmount implements IncrementAmmount {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
     required TResult orElse(),
   }) {
     if (incrementAmmount != null) {
@@ -511,6 +538,7 @@ class _$IncrementAmmount implements IncrementAmmount {
     required TResult Function(RemoveProduct value) removeProduct,
     required TResult Function(IncrementAmmount value) incrementAmmount,
     required TResult Function(DecrementAmmount value) decrementAmmount,
+    required TResult Function(Checkout value) checkout,
   }) {
     return incrementAmmount(this);
   }
@@ -522,6 +550,7 @@ class _$IncrementAmmount implements IncrementAmmount {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
   }) {
     return incrementAmmount?.call(this);
   }
@@ -533,6 +562,7 @@ class _$IncrementAmmount implements IncrementAmmount {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
     required TResult orElse(),
   }) {
     if (incrementAmmount != null) {
@@ -621,6 +651,7 @@ class _$DecrementAmmount implements DecrementAmmount {
     required TResult Function(CartItemEntity cartProduct) removeProduct,
     required TResult Function(CartItemEntity cartProduct) incrementAmmount,
     required TResult Function(CartItemEntity cartProduct) decrementAmmount,
+    required TResult Function(CartEntity cartEntity) checkout,
   }) {
     return decrementAmmount(cartProduct);
   }
@@ -632,6 +663,7 @@ class _$DecrementAmmount implements DecrementAmmount {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
   }) {
     return decrementAmmount?.call(cartProduct);
   }
@@ -643,6 +675,7 @@ class _$DecrementAmmount implements DecrementAmmount {
     TResult Function(CartItemEntity cartProduct)? removeProduct,
     TResult Function(CartItemEntity cartProduct)? incrementAmmount,
     TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
     required TResult orElse(),
   }) {
     if (decrementAmmount != null) {
@@ -658,6 +691,7 @@ class _$DecrementAmmount implements DecrementAmmount {
     required TResult Function(RemoveProduct value) removeProduct,
     required TResult Function(IncrementAmmount value) incrementAmmount,
     required TResult Function(DecrementAmmount value) decrementAmmount,
+    required TResult Function(Checkout value) checkout,
   }) {
     return decrementAmmount(this);
   }
@@ -669,6 +703,7 @@ class _$DecrementAmmount implements DecrementAmmount {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
   }) {
     return decrementAmmount?.call(this);
   }
@@ -680,6 +715,7 @@ class _$DecrementAmmount implements DecrementAmmount {
     TResult Function(RemoveProduct value)? removeProduct,
     TResult Function(IncrementAmmount value)? incrementAmmount,
     TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
     required TResult orElse(),
   }) {
     if (decrementAmmount != null) {
@@ -696,6 +732,156 @@ abstract class DecrementAmmount implements CartEvent {
   CartItemEntity get cartProduct => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $DecrementAmmountCopyWith<DecrementAmmount> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $CheckoutCopyWith<$Res> {
+  factory $CheckoutCopyWith(Checkout value, $Res Function(Checkout) then) =
+      _$CheckoutCopyWithImpl<$Res>;
+  $Res call({CartEntity cartEntity});
+}
+
+/// @nodoc
+class _$CheckoutCopyWithImpl<$Res> extends _$CartEventCopyWithImpl<$Res>
+    implements $CheckoutCopyWith<$Res> {
+  _$CheckoutCopyWithImpl(Checkout _value, $Res Function(Checkout) _then)
+      : super(_value, (v) => _then(v as Checkout));
+
+  @override
+  Checkout get _value => super._value as Checkout;
+
+  @override
+  $Res call({
+    Object? cartEntity = freezed,
+  }) {
+    return _then(Checkout(
+      cartEntity: cartEntity == freezed
+          ? _value.cartEntity
+          : cartEntity // ignore: cast_nullable_to_non_nullable
+              as CartEntity,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$Checkout implements Checkout {
+  const _$Checkout({required this.cartEntity});
+
+  @override
+  final CartEntity cartEntity;
+
+  @override
+  String toString() {
+    return 'CartEvent.checkout(cartEntity: $cartEntity)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is Checkout &&
+            (identical(other.cartEntity, cartEntity) ||
+                const DeepCollectionEquality()
+                    .equals(other.cartEntity, cartEntity)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(cartEntity);
+
+  @JsonKey(ignore: true)
+  @override
+  $CheckoutCopyWith<Checkout> get copyWith =>
+      _$CheckoutCopyWithImpl<Checkout>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(ProductEntity product) addProduct,
+    required TResult Function(CartItemEntity cartProduct) removeProduct,
+    required TResult Function(CartItemEntity cartProduct) incrementAmmount,
+    required TResult Function(CartItemEntity cartProduct) decrementAmmount,
+    required TResult Function(CartEntity cartEntity) checkout,
+  }) {
+    return checkout(cartEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function(ProductEntity product)? addProduct,
+    TResult Function(CartItemEntity cartProduct)? removeProduct,
+    TResult Function(CartItemEntity cartProduct)? incrementAmmount,
+    TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
+  }) {
+    return checkout?.call(cartEntity);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(ProductEntity product)? addProduct,
+    TResult Function(CartItemEntity cartProduct)? removeProduct,
+    TResult Function(CartItemEntity cartProduct)? incrementAmmount,
+    TResult Function(CartItemEntity cartProduct)? decrementAmmount,
+    TResult Function(CartEntity cartEntity)? checkout,
+    required TResult orElse(),
+  }) {
+    if (checkout != null) {
+      return checkout(cartEntity);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AddProduct value) addProduct,
+    required TResult Function(RemoveProduct value) removeProduct,
+    required TResult Function(IncrementAmmount value) incrementAmmount,
+    required TResult Function(DecrementAmmount value) decrementAmmount,
+    required TResult Function(Checkout value) checkout,
+  }) {
+    return checkout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(AddProduct value)? addProduct,
+    TResult Function(RemoveProduct value)? removeProduct,
+    TResult Function(IncrementAmmount value)? incrementAmmount,
+    TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
+  }) {
+    return checkout?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AddProduct value)? addProduct,
+    TResult Function(RemoveProduct value)? removeProduct,
+    TResult Function(IncrementAmmount value)? incrementAmmount,
+    TResult Function(DecrementAmmount value)? decrementAmmount,
+    TResult Function(Checkout value)? checkout,
+    required TResult orElse(),
+  }) {
+    if (checkout != null) {
+      return checkout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Checkout implements CartEvent {
+  const factory Checkout({required CartEntity cartEntity}) = _$Checkout;
+
+  CartEntity get cartEntity => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $CheckoutCopyWith<Checkout> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

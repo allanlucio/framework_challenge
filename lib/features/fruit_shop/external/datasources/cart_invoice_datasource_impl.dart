@@ -2,25 +2,32 @@ import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
 
+import '../../../../core/errors/exceptions.dart';
 import '../../../../core/extensions/double_extensions.dart';
 import '../../domain/entities/cart_item_entity.dart';
-import '../../domain/entities/product_entity.dart';
+import '../../infra/datasources/print_cart_invoice_data_source.dart';
+import '../../infra/models/cart_model.dart';
 
-class PDFGenerator {
-  Future<void> generate() async {
-    final pdf = pw.Document();
+class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
+  @override
+  Future<void> call({required CartModel cart}) async {
+    try {
+      final pdf = pw.Document();
 
-    pdf.addPage(
-      pw.MultiPage(
-        pageTheme: pw.PageTheme(margin: pw.EdgeInsets.zero),
-        build: buildContent,
-        footer: buildFooter,
-        header: buildHeader,
-      ),
-    );
+      pdf.addPage(
+        pw.MultiPage(
+          pageTheme: pw.PageTheme(margin: pw.EdgeInsets.zero),
+          build: (context) => buildContent(context, cart.items.toList()),
+          footer: (context) => buildFooter(context, cart),
+          header: buildHeader,
+        ),
+      );
 
-    await Printing.layoutPdf(
-        onLayout: (PdfPageFormat format) async => pdf.save());
+      await Printing.layoutPdf(
+          onLayout: (PdfPageFormat format) async => pdf.save());
+    } on Exception {
+      throw PrintException();
+    }
   }
 
   pw.Widget buildHeader(context) {
@@ -52,7 +59,7 @@ class PDFGenerator {
     );
   }
 
-  pw.Widget buildFooter(context) {
+  pw.Widget buildFooter(context, CartModel cart) {
     return pw.Container(
       color: PdfColors.grey200,
       height: 70,
@@ -62,7 +69,7 @@ class PDFGenerator {
         mainAxisAlignment: pw.MainAxisAlignment.end,
         children: [
           pw.Text(
-            "Total: ${1235.25.toBRLString()}",
+            "Total: ${cart.total.toBRLString()}",
             style: pw.TextStyle(
               fontSize: 25,
               fontWeight: pw.FontWeight.bold,
@@ -73,19 +80,13 @@ class PDFGenerator {
     );
   }
 
-  List<pw.Widget> buildContent(context) {
-    return [contentTable(context)];
+  List<pw.Widget> buildContent(pw.Context context, List<CartItemEntity> items) {
+    return [contentTable(context, items)];
   }
 
-  pw.Widget contentTable(pw.Context context) {
+  pw.Widget contentTable(pw.Context context, List<CartItemEntity> items) {
     const headers = ["Nome", "Quantidade", "Valor unitário", "Total"];
-    final cartItems = [
-      CartItemEntity(
-        ammount: 2,
-        product: ProductEntity(
-            description: "oi", imageUrl: "ola", name: "teste", price: 25),
-      )
-    ];
+
     return pw.Table.fromTextArray(
         cellAlignment: pw.Alignment.centerLeft,
         headerHeight: 25,
@@ -99,7 +100,7 @@ class PDFGenerator {
         cellStyle: pw.TextStyle(fontSize: 10),
         headerStyle: pw.TextStyle(fontSize: 10, fontWeight: pw.FontWeight.bold),
         headers: headers,
-        data: cartItems.map((item) => itemToArray(item)).toList());
+        data: items.map((item) => itemToArray(item)).toList());
   }
 
   List<String> itemToArray(CartItemEntity item) {

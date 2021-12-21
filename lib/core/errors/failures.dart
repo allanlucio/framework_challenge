@@ -6,3 +6,5 @@ abstract class Failure extends Equatable {
 }
 
 class SearchFailure extends Failure {}
+
+class PrintFailure extends Failure {}
