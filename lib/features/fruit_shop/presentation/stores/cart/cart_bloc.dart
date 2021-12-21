@@ -23,6 +23,30 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<DecrementAmmount>(decrementAmmount);
   }
 
+  FutureOr<void> addProduct(event, emit) {
+    final items = {...state.cart.items};
+
+    items.add(CartItemEntity(ammount: 1, product: event.product));
+
+    emit(Loaded(
+        cart: CartEntity(items: items), message: ADD_CART_SUCCESS_MESSAGE));
+  }
+
+  FutureOr<void> removeProduct(event, emit) {
+    final items = {...state.cart.items};
+    if (items.contains(event.cartProduct)) {
+      final result = items
+          .where((cartProduct) => cartProduct != event.cartProduct)
+          .toSet();
+
+      emit(Loaded(
+          cart: CartEntity(items: result),
+          message: REMOVE_CART_SUCCESS_MESSAGE));
+    } else {
+      emit(state.copyWith(message: REMOVE_CART_FAILURE_MESSAGE));
+    }
+  }
+
   FutureOr<void> decrementAmmount(event, emit) {
     final items = {...state.cart.items};
     final cartProduct = event.cartProduct;
@@ -49,29 +73,5 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       );
       emit(Loaded(cart: CartEntity(items: result)));
     }
-  }
-
-  FutureOr<void> removeProduct(event, emit) {
-    final items = {...state.cart.items};
-    if (items.contains(event.cartProduct)) {
-      final result = items
-          .where((cartProduct) => cartProduct != event.cartProduct)
-          .toSet();
-
-      emit(Loaded(
-          cart: CartEntity(items: result),
-          message: REMOVE_CART_SUCCESS_MESSAGE));
-    } else {
-      emit(state.copyWith(message: REMOVE_CART_FAILURE_MESSAGE));
-    }
-  }
-
-  FutureOr<void> addProduct(event, emit) {
-    final items = {...state.cart.items};
-
-    items.add(CartItemEntity(ammount: 1, product: event.product));
-
-    emit(Loaded(
-        cart: CartEntity(items: items), message: ADD_CART_SUCCESS_MESSAGE));
   }
 }

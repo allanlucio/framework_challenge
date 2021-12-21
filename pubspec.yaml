@@ -24,15 +24,13 @@ dev_dependencies:
   mockito: ^5.0.16
   build_runner: ^2.1.2
   freezed: ^0.14.5
-  flutter_lints: ^1.0.0
 
 flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
+  assets:
+    - logo.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

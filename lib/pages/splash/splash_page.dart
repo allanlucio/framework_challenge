@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({Key? key}) : super(key: key);
@@ -11,6 +12,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   void initState() {
     super.initState();
+    Future.delayed(Duration(milliseconds: 100), () {
+      Modular.to.navigate("/fruit_shop");
+    });
   }
 
   @override
@@ -18,7 +22,9 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: Container(
         color: Theme.of(context).colorScheme.onSecondary,
-        child: const Text("Colocar imagem depois"),
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }
