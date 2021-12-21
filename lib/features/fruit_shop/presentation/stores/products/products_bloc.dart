@@ -13,6 +13,7 @@ const PRODUCTS_SEARCH_FAILURE_MESSAGE =
 
 class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
   final SearchProductUseCase usecase;
+
   ProductsBloc({required this.usecase}) : super(const Empty()) {
     on<SearchProducts>((event, emit) async {
       emit(const ProductsState.loading());

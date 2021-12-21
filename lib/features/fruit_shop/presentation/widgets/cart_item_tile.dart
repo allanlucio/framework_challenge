@@ -20,16 +20,17 @@ class CartItemTile extends StatelessWidget {
   final Function(CartItemEntity) onIncremment;
   final Function(CartItemEntity) onRemove;
 
+  final double _itemHeight = 135;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: Row(
         children: [
-          ProductContainer(height: 150, product: item.product),
+          ProductContainer(height: _itemHeight, product: item.product),
           Expanded(
             child: Container(
-              height: 150,
+              height: _itemHeight,
               color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -37,7 +38,7 @@ class CartItemTile extends StatelessWidget {
                   Text(
                     "Quantidade: ",
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 15,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -47,15 +48,16 @@ class CartItemTile extends StatelessWidget {
                     onIncremment: onIncremment,
                   ),
                   Container(
-                    height: 30,
+                    height: 28,
                     child: ElevatedButtonDS(
-                      fontSize: 18,
+                      fontSize: 16,
                       title: "Remover",
                       icon: Icons.delete_forever_rounded,
                       onPressed: () => onRemove(item),
                     ),
                   ),
                   Divider(
+                    height: 0,
                     thickness: 1,
                   ),
                   Padding(
@@ -66,7 +68,7 @@ class CartItemTile extends StatelessWidget {
                         Text(
                           "Total: ${item.total.toBRLString()}",
                           style: TextStyle(
-                            fontSize: 16,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                           ),
                         )
@@ -103,13 +105,13 @@ class CartItemControls extends StatelessWidget {
           onPressed: item.ammount == 1 ? null : () => onDecremment(item),
           icon: Icon(
             Icons.keyboard_arrow_left,
-            size: 30,
+            size: 26,
           ),
         ),
         Text(
           "${item.ammount.toString()}",
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 18,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -117,7 +119,7 @@ class CartItemControls extends StatelessWidget {
           onPressed: () => onIncremment(item),
           icon: Icon(
             Icons.keyboard_arrow_right,
-            size: 30,
+            size: 26,
           ),
         ),
       ],

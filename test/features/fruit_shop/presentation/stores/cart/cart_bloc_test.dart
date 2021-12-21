@@ -1,13 +1,22 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:framework_challenge/features/fruit_shop/domain/entities/cart_entity.dart';
 import 'package:framework_challenge/features/fruit_shop/domain/entities/cart_item_entity.dart';
 import 'package:framework_challenge/features/fruit_shop/domain/entities/product_entity.dart';
+import 'package:framework_challenge/features/fruit_shop/domain/usecases/search_products/print_cart_invoice_usecase.dart';
 import 'package:framework_challenge/features/fruit_shop/presentation/stores/cart/cart_bloc.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
 
+import 'cart_bloc_test.mocks.dart';
+
+@GenerateMocks([PrintCartInvoiceUsecase])
 main() {
   late CartBloc bloc;
+  late MockPrintCartInvoiceUsecase mockPrintCartInvoiceUsecase;
   setUp(() {
-    bloc = CartBloc();
+    mockPrintCartInvoiceUsecase = MockPrintCartInvoiceUsecase();
+    bloc = CartBloc(printCartUsecase: mockPrintCartInvoiceUsecase);
   });
   test("should be the initial state Loaded with the cart empty", () async {
     expect(bloc.state, isA<Loaded>());
@@ -185,6 +194,30 @@ main() {
       bloc.add(const AddProduct(product: tManga));
       bloc.add(IncrementAmmount(cartProduct: tCartItemManga));
       bloc.add(DecrementAmmount(cartProduct: tCartItemMangaWithAmmountTwo));
+    });
+  });
+
+  group("checkout", () {
+    setUp(() {
+      //
+    });
+    final tCart = CartEntity(
+      items: {
+        CartItemEntity(
+          ammount: 1,
+          product: ProductEntity(
+              description: "desc", imageUrl: "aa", name: "", price: 12.2),
+        ),
+      },
+    );
+
+    test("should call the printUsecase with the proper cart when called",
+        () async {
+      when(mockPrintCartInvoiceUsecase(cart: anyNamed("cart"))).thenAnswer(
+        (_) async => Right(null),
+      );
+      bloc.add(Checkout(cartEntity: tCart));
+      await untilCalled(mockPrintCartInvoiceUsecase(cart: tCart));
     });
   });
 }

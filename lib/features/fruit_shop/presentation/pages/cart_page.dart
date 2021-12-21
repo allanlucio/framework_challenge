@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../core/extensions/double_extensions.dart';
 import '../../../../design_system/widgets/buttons/elevated_button_ds.dart';
 import '../../../../design_system/widgets/scaffold/fruit_shop_scaffold.dart';
 import '../../domain/entities/cart_entity.dart';
@@ -32,35 +33,77 @@ class _CartPageState extends State<CartPage> {
         "Carrinho",
         style: TextStyle(fontWeight: FontWeight.bold),
       )),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: BlocBuilder<CartBloc, CartState>(
+        bloc: cartBloc,
+        builder: (context, state) {
+          return state.when(
+            loaded: (cart, message) {
+              return Column(
+                children: [
+                  Flexible(
+                    flex: 9,
+                    child: CartList(cart: cart, cartBloc: cartBloc),
+                  ),
+                  Divider(thickness: 1),
+                  Flexible(flex: 1, child: TotalPrice(totalPrice: cart.total)),
+                  Flexible(
+                    flex: 2,
+                    child: CheckoutButton(cartBloc: cartBloc, cart: cart),
+                  ),
+                ],
+              );
+            },
+          );
+        },
+      ),
+    );
+  }
+}
+
+class TotalPrice extends StatelessWidget {
+  const TotalPrice({
+    Key? key,
+    required this.totalPrice,
+  }) : super(key: key);
+  final double totalPrice;
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Flexible(
-            flex: 10,
-            child: BlocBuilder<CartBloc, CartState>(
-              bloc: cartBloc,
-              builder: (context, state) {
-                return state.when(
-                  loaded: (cart, message) {
-                    return CartList(
-                      cart: cart,
-                      cartBloc: cartBloc,
-                    );
-                  },
-                );
-              },
-            ),
-          ),
-          Flexible(
-              flex: 1,
-              child: ElevatedButtonDS(
-                title: "Finalizar",
-                icon: Icons.check,
-                onPressed: () => null,
-                buttomColor: Theme.of(context).colorScheme.primary,
-              ))
+          Text(
+            "Total da compra: ${totalPrice.toBRLString()}",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          )
         ],
       ),
+    );
+  }
+}
+
+class CheckoutButton extends StatelessWidget {
+  const CheckoutButton({
+    Key? key,
+    required this.cartBloc,
+    required this.cart,
+  }) : super(key: key);
+
+  final CartBloc cartBloc;
+  final CartEntity cart;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButtonDS(
+      title: "Finalizar",
+      icon: Icons.check,
+      onPressed: cart.items.isNotEmpty
+          ? () {
+              cartBloc.add(Checkout(cartEntity: cart));
+            }
+          : null,
+      buttomColor: Theme.of(context).colorScheme.primary,
     );
   }
 }
