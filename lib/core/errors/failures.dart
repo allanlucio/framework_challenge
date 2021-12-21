@@ -8,3 +8,5 @@ abstract class Failure extends Equatable {
 class SearchFailure extends Failure {}
 
 class PrintFailure extends Failure {}
+
+class AuthFailure extends Failure {}
