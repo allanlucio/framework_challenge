@@ -30,9 +30,9 @@ main() {
     price: 10.5,
     imageUrl: "imageUrl",
   );
-  const tCartItemManga = CartItemEntity(ammount: 1, product: tManga);
-  const tCartItemPera = CartItemEntity(ammount: 1, product: tPera);
-  const tCartItemMangaWithAmmountTwo =
+  final tCartItemManga = CartItemEntity(ammount: 1, product: tManga);
+  final tCartItemPera = CartItemEntity(ammount: 1, product: tPera);
+  final tCartItemMangaWithAmmountTwo =
       CartItemEntity(ammount: 2, product: tManga);
   group("AddProduct", () {
     setUp(() {
@@ -104,7 +104,7 @@ main() {
 
       expectLater(bloc.stream, emitsInOrder(expected));
       bloc.add(const AddProduct(product: tManga));
-      bloc.add(const RemoveProduct(cartProduct: tCartItemManga));
+      bloc.add(RemoveProduct(cartProduct: tCartItemManga));
     });
     test(
         "shouldnt remove the product when it doesnt exist and show the proper message",
@@ -121,7 +121,7 @@ main() {
 
       expectLater(bloc.stream, emitsInOrder(expected));
       bloc.add(const AddProduct(product: tManga));
-      bloc.add(const RemoveProduct(cartProduct: tCartItemPera));
+      bloc.add(RemoveProduct(cartProduct: tCartItemPera));
     });
   });
 
@@ -145,7 +145,7 @@ main() {
 
       expectLater(bloc.stream, emitsInOrder(expected));
       bloc.add(const AddProduct(product: tManga));
-      bloc.add(const IncrementAmmount(cartProduct: tCartItemManga));
+      bloc.add(IncrementAmmount(cartProduct: tCartItemManga));
     });
   });
   group("DecrementAmmount", () {
@@ -165,7 +165,7 @@ main() {
 
       expectLater(bloc.stream, emitsInOrder(expected));
       bloc.add(const AddProduct(product: tManga));
-      bloc.add(const DecrementAmmount(cartProduct: tCartItemManga));
+      bloc.add(DecrementAmmount(cartProduct: tCartItemManga));
     });
     test("should decrement the ammount by 1 when the ammount is higher than 1",
         () async {
@@ -183,9 +183,8 @@ main() {
 
       expectLater(bloc.stream, emitsInOrder(expected));
       bloc.add(const AddProduct(product: tManga));
-      bloc.add(const IncrementAmmount(cartProduct: tCartItemManga));
-      bloc.add(
-          const DecrementAmmount(cartProduct: tCartItemMangaWithAmmountTwo));
+      bloc.add(IncrementAmmount(cartProduct: tCartItemManga));
+      bloc.add(DecrementAmmount(cartProduct: tCartItemMangaWithAmmountTwo));
     });
   });
 }

@@ -8,12 +8,14 @@ class ElevatedButtonDS extends StatelessWidget {
     required this.title,
     required this.icon,
     this.fontSize,
+    this.buttomColor,
   }) : super(key: key);
 
   final Function()? onPressed;
   final String title;
   final IconData icon;
   final double? fontSize;
+  final Color? buttomColor;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,7 +23,7 @@ class ElevatedButtonDS extends StatelessWidget {
       width: double.infinity,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-            primary: Theme.of(context).colorScheme.secondary),
+            primary: buttomColor ?? Theme.of(context).colorScheme.secondary),
         onPressed: onPressed,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,

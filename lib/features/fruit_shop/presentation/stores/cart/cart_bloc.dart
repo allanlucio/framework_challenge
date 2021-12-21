@@ -23,7 +23,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<DecrementAmmount>(decrementAmmount);
   }
 
-  FutureOr<void> addProduct(event, emit) {
+  FutureOr<void> addProduct(AddProduct event, emit) {
     final items = {...state.cart.items};
 
     items.add(CartItemEntity(ammount: 1, product: event.product));
@@ -32,7 +32,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         cart: CartEntity(items: items), message: ADD_CART_SUCCESS_MESSAGE));
   }
 
-  FutureOr<void> removeProduct(event, emit) {
+  FutureOr<void> removeProduct(RemoveProduct event, emit) {
     final items = {...state.cart.items};
     if (items.contains(event.cartProduct)) {
       final result = items
@@ -47,31 +47,33 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     }
   }
 
-  FutureOr<void> decrementAmmount(event, emit) {
+  FutureOr<void> incrementAmmount(IncrementAmmount event, emit) {
+    final items = {...state.cart.items};
+    final cartProduct = event.cartProduct;
+    if (items.contains(event.cartProduct)) {
+      final result = items.where((element) => element != cartProduct).toList();
+      result.add(
+        cartProduct.copyWith(ammount: cartProduct.ammount + 1),
+      );
+      result.sort((a, b) => a.product.name.compareTo(b.product.name));
+      emit(Loaded(cart: CartEntity(items: result.toSet())));
+    }
+  }
+
+  FutureOr<void> decrementAmmount(DecrementAmmount event, emit) {
     final items = {...state.cart.items};
     final cartProduct = event.cartProduct;
     if (items.contains(event.cartProduct)) {
       final result = items
           .where((element) => element.product != cartProduct.product)
-          .toSet();
+          .toList();
       result.add(
         cartProduct.copyWith(
             ammount: cartProduct.ammount <= 1 ? 1 : cartProduct.ammount - 1),
       );
+      result.sort((a, b) => a.product.name.compareTo(b.product.name));
 
-      emit(Loaded(cart: CartEntity(items: result)));
-    }
-  }
-
-  FutureOr<void> incrementAmmount(event, emit) {
-    final items = {...state.cart.items};
-    final cartProduct = event.cartProduct;
-    if (items.contains(event.cartProduct)) {
-      final result = items.where((element) => element != cartProduct).toSet();
-      result.add(
-        cartProduct.copyWith(ammount: cartProduct.ammount + 1),
-      );
-      emit(Loaded(cart: CartEntity(items: result)));
+      emit(Loaded(cart: CartEntity(items: result.toSet())));
     }
   }
 }

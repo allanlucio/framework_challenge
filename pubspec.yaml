@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  flutter_bloc: ^7.3.3
+  flutter_bloc: ^8.0.0
   equatable: ^2.0.3
   flutter_modular: ^4.1.2
   freezed_annotation: ^0.14.3
@@ -25,6 +25,7 @@ dev_dependencies:
   mockito: ^5.0.16
   build_runner: ^2.1.2
   freezed: ^0.14.5
+  bloc_test: ^9.0.1
 
 flutter:
   uses-material-design: true
