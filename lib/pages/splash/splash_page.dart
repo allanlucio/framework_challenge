@@ -13,7 +13,7 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(Duration(milliseconds: 100), () {
-      Modular.to.navigate("/fruit_shop");
+      Modular.to.navigate("/login");
     });
   }
 

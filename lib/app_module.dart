@@ -1,5 +1,6 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
+import 'features/auth/auth_module.dart';
 import 'features/fruit_shop/domain/repositories/product_repository.dart';
 import 'features/fruit_shop/domain/services/print_cart_invoice_service.dart';
 import 'features/fruit_shop/domain/usecases/search_products/print_cart_invoice_usecase.dart';
@@ -38,6 +39,6 @@ class AppModule extends Module {
   List<ModularRoute> get routes => [
         ChildRoute(Modular.initialRoute, child: (_, __) => const SplashPage()),
         ModuleRoute("/fruit_shop", module: FruitShopModule()),
-        // ModuleRoute("/login", module: AuthModule()),
+        ModuleRoute("/login", module: AuthModule()),
       ];
 }
