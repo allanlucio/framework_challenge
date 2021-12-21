@@ -2,8 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import '../../../../design_system/scaffold/fruit_shop_scaffold.dart';
 
-import '../../../../design_system/widgets/scaffold/fruit_shop_scaffold.dart';
 import '../stores/products/products_bloc.dart';
 import '../widgets/products_container.dart';
 import '../widgets/search_text_field.dart';

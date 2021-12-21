@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
+import '../../../../design_system/form/buttons/elevated_button_ds.dart';
+import '../../../../design_system/scaffold/fruit_shop_scaffold.dart';
 import '../../../../design_system/snackbar/snackbar.dart';
-import '../../../../design_system/widgets/buttons/elevated_button_ds.dart';
-import '../../../../design_system/widgets/scaffold/fruit_shop_scaffold.dart';
 import '../../domain/entities/product_entity.dart';
 import '../stores/cart/cart_bloc.dart';
 import '../widgets/products_container.dart';
