@@ -10,6 +10,8 @@ class CartItemEntity extends Equatable {
   @override
   List<Object?> get props => [ammount, product];
 
+  double get total => ammount * product.price;
+
   CartItemEntity copyWith({int? ammount, ProductEntity? product}) {
     return CartItemEntity(
         ammount: ammount ?? this.ammount, product: product ?? this.product);

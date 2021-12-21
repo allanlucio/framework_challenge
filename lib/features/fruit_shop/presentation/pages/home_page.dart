@@ -43,7 +43,6 @@ class _HomePageState extends ModularState<HomePage, ProductsBloc> {
           ),
         ],
       ),
-      onCartClick: () => null,
       body: Column(
         children: [
           SizedBox(

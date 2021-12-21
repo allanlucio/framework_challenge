@@ -1,16 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 
 class FruitShopScaffold extends StatelessWidget {
-  const FruitShopScaffold(
-      {Key? key,
-      required this.title,
-      required this.body,
-      required this.onCartClick})
-      : super(key: key);
+  const FruitShopScaffold({
+    Key? key,
+    required this.title,
+    required this.body,
+  }) : super(key: key);
   final Widget title;
   final Widget body;
-  final Function() onCartClick;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class FruitShopScaffold extends StatelessWidget {
                 preferredSize: Size.fromHeight(6.0)),
             actions: [
               IconButton(
-                onPressed: onCartClick,
+                onPressed: () => Modular.to.pushNamed("/fruit_shop/cart"),
                 icon: Icon(
                   Icons.shopping_cart_sharp,
                   color: Colors.black,
