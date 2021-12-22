@@ -19,8 +19,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends ModularState<LoginPage, AuthCubit> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final emailController = TextEditingController(text: "admin@fruit_shop.com");
-  final passwordController = TextEditingController(text: "securepassword");
+  final emailController = TextEditingController(text: "");
+  final passwordController = TextEditingController(text: "");
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -36,6 +36,7 @@ class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
       color: PdfColors.grey200,
       height: 110,
       width: double.infinity,
+      padding: pw.EdgeInsets.all(5),
       child: pw.Column(
         crossAxisAlignment: pw.CrossAxisAlignment.center,
         children: [
@@ -77,13 +78,6 @@ class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
             )
           ]),
           pw.Spacer(),
-          pw.Text(
-            "Produtos",
-            style: pw.TextStyle(
-              fontSize: 22,
-              fontWeight: pw.FontWeight.bold,
-            ),
-          )
         ],
       ),
     );
@@ -111,7 +105,23 @@ class CartInvoiceDataSourceImpl implements CartInvoiceDataSource {
   }
 
   List<pw.Widget> buildContent(pw.Context context, List<CartItemEntity> items) {
-    return [contentTable(context, items)];
+    return [
+      pw.Container(
+          padding: pw.EdgeInsets.all(10.0),
+          child: pw.Column(
+            children: [
+              pw.Text(
+                "Produtos",
+                style: pw.TextStyle(
+                  fontSize: 20,
+                  fontWeight: pw.FontWeight.bold,
+                ),
+              ),
+              pw.SizedBox(height: 10),
+              contentTable(context, items),
+            ],
+          ))
+    ];
   }
 
   pw.Widget contentTable(pw.Context context, List<CartItemEntity> items) {

@@ -12,6 +12,14 @@ A Arquitetura base do projeto utiliza os seguintes conceitos
 - Gerência de Estado foi utilizada a lib **BLOC**
 - A Lib **Freezed** foi utilizada para auxiliar na construção dos **BLOCs** e **Mockito**
 
+## Autenticação
+
+A autenticação é **FAKE**, ou seja apenas duas constantes com o valor esperados são utilizadas para comparação e redirecionar para a home.
+
+`Usuario: admin@fruit_shop.com`
+
+`Senha: insecurepassword`
+
 ## Instruções para execução
 
 Como o projeto utiliza geração de código, é preciso executar o build runner para gerar o código necessário.
