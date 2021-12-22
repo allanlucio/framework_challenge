@@ -10,7 +10,7 @@ class HomeTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Text(
-        "Ofertas do dia",
+        "Produtos",
         style: TextStyle(
           color: Colors.black,
           fontSize: 20,
