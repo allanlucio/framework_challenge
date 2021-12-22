@@ -53,7 +53,11 @@ class _FruitShopScaffoldState extends State<FruitShopScaffold> {
           ],
           title: widget.title),
       body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(), child: widget.body),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: widget.body),
     );
   }
 }
