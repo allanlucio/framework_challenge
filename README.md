@@ -1,16 +1,27 @@
 # framework_challenge
 
-A new Flutter project.
+Este projeto foi desenvolvido com o objetivo de aplicar para a vaga de desenvolvedor Flutter na @Framework.
 
-## Getting Started
+## Conceitos Aplicados
 
-This project is a starting point for a Flutter application.
+A Arquitetura base do projeto utiliza os seguintes conceitos
 
-A few resources to get you started if this is your first Flutter project:
+- Clean Archtecture
+- Os testes realizados foram feitos utilizando a metodologia TDD
+- lib **Modular** para Roteamento e injeção de dependências
+- Gerência de Estado foi utilizada a lib **BLOC**
+- A Lib **Freezed** foi utilizada para auxiliar na construção dos **BLOCs** e **Mockito**
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+## Instruções para execução
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Como o projeto utiliza geração de código, é preciso executar o build runner para gerar o código necessário.
+
+### 1 - Executando a geração de código: [Build Runner](https://pub.dev/packages/build_runner)
+
+$ `flutter pub run build_runner watch --delete-conflicting-outputs`
+
+### 2- Executanto o projeto flutter
+
+Após ter feito a geração de código o projeto pode ser executado normalmente.
+
+$ `flutter run`
