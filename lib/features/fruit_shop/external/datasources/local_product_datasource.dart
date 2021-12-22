@@ -18,7 +18,7 @@ class LocalProductDataSource implements ProductDataSource {
       final result = products.where((element) =>
           this.diacritic.clean(element.name).contains(cleanedQuery));
       return Future.delayed(
-        const Duration(milliseconds: 200),
+        const Duration(milliseconds: 500),
         () => result.toList(),
       );
     } on Exception {
