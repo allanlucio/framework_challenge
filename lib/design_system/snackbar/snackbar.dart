@@ -12,6 +12,7 @@ class SnackBarDS {
       SnackBar(
         content: Text(message),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        duration: Duration(milliseconds: 1500),
       ),
     );
   }
@@ -21,6 +22,7 @@ class SnackBarDS {
       SnackBar(
         content: Text(message),
         backgroundColor: Colors.blue,
+        duration: Duration(milliseconds: 1500),
       ),
     );
   }
@@ -30,6 +32,7 @@ class SnackBarDS {
       SnackBar(
         content: Text(message),
         backgroundColor: Theme.of(context).colorScheme.secondary,
+        duration: Duration(milliseconds: 1500),
       ),
     );
   }

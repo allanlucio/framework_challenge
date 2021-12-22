@@ -41,7 +41,7 @@ class _CartPageState extends State<CartPage> {
               return Column(
                 children: [
                   Flexible(
-                    flex: 9,
+                    flex: 12,
                     child: CartList(cart: cart, cartBloc: cartBloc),
                   ),
                   Divider(thickness: 1),
@@ -95,15 +95,18 @@ class CheckoutButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButtonDS(
-      title: "Finalizar",
-      icon: Icons.check,
-      onPressed: cart.items.isNotEmpty
-          ? () {
-              cartBloc.add(Checkout(cartEntity: cart));
-            }
-          : null,
-      buttomColor: Theme.of(context).colorScheme.primary,
+    return Container(
+      height: 40,
+      child: ElevatedButtonDS(
+        title: "Finalizar",
+        icon: Icons.check,
+        onPressed: cart.items.isNotEmpty
+            ? () {
+                cartBloc.add(Checkout(cartEntity: cart));
+              }
+            : null,
+        buttomColor: Theme.of(context).colorScheme.primary,
+      ),
     );
   }
 }

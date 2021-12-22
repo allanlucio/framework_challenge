@@ -6,6 +6,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 import '../../../../core/config/config.dart';
 import '../../../../design_system/form/buttons/submit_button_ds.dart';
 import '../../../../design_system/form/inputs/text_field_ds.dart';
+import '../../../../design_system/logo/logo.dart';
 import '../../../../design_system/snackbar/snackbar.dart';
 import '../store/auth_cubit/auth_cubit.dart';
 
@@ -37,7 +38,7 @@ class _LoginPageState extends ModularState<LoginPage, AuthCubit> {
             SizedBox(
               height: 90,
             ),
-            Image.asset("assets/logo.png"),
+            LogoDS(),
             Text(
               "Fruit Shop",
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
