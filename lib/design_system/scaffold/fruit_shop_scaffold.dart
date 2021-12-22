@@ -53,7 +53,11 @@ class _FruitShopScaffoldState extends State<FruitShopScaffold> {
           ],
           title: widget.title),
       body: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(), child: widget.body),
+          onTap: () {
+            FocusScope.of(context).unfocus();
+            FocusScope.of(context).requestFocus(FocusNode());
+          },
+          child: widget.body),
     );
   }
 }
@@ -66,40 +70,43 @@ class CartButton extends StatelessWidget {
   final int itemsAmmount;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Center(
-          child: IconButton(
-            onPressed: () => Modular.to.pushNamed("/fruit_shop/cart"),
-            icon: Icon(
-              Icons.shopping_cart_sharp,
-              color: Colors.black,
+    return Padding(
+      padding: const EdgeInsets.only(right: 10),
+      child: Stack(
+        children: [
+          Center(
+            child: IconButton(
+              onPressed: () => Modular.to.pushNamed("/fruit_shop/cart"),
+              icon: Icon(
+                Icons.shopping_cart_sharp,
+                color: Colors.black,
+              ),
             ),
           ),
-        ),
-        itemsAmmount != 0
-            ? Positioned(
-                right: 4,
-                top: 5,
-                child: Container(
-                  height: 13,
-                  width: 13,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
-                  child: Center(
-                      child: Text(
-                    itemsAmmount.toString(),
-                    style: TextStyle(
-                      fontSize: 9,
-                      fontWeight: FontWeight.bold,
+          itemsAmmount != 0
+              ? Positioned(
+                  right: 4,
+                  top: 5,
+                  child: Container(
+                    height: 13,
+                    width: 13,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: Theme.of(context).colorScheme.secondary,
                     ),
-                  )),
-                ),
-              )
-            : SizedBox(),
-      ],
+                    child: Center(
+                        child: Text(
+                      itemsAmmount.toString(),
+                      style: TextStyle(
+                        fontSize: 9,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    )),
+                  ),
+                )
+              : SizedBox(),
+        ],
+      ),
     );
   }
 }

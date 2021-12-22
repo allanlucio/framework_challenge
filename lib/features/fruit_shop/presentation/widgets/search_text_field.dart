@@ -21,9 +21,12 @@ class SearchTextField extends StatelessWidget {
         autofocus: false,
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: "Clique para pesquisar...",
+          hintText: "Informe o nome do produto",
+          labelText: "Pesquisar",
           fillColor: Colors.white,
           prefixIcon: Icon(Icons.search),
+          labelStyle: TextStyle(fontSize: 13),
+          hintStyle: TextStyle(fontSize: 12),
           suffixIcon: Tooltip(
             message: "Limpar busca",
             child: IconButton(

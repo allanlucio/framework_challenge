@@ -24,7 +24,7 @@ class ProductContainer extends StatelessWidget {
       onTap: onClick != null ? () => onClick!(product) : null,
       child: Container(
         height: height,
-        color: Theme.of(context).colorScheme.background.withOpacity(0.5),
+        color: Theme.of(context).colorScheme.background.withOpacity(0.3),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
@@ -42,13 +42,11 @@ class ProductContainer extends StatelessWidget {
                 ),
               ),
             ),
-            Divider(
-              height: 10,
-              thickness: 0.4,
-            ),
             Flexible(
               flex: 5,
               child: Container(
+                color: Theme.of(context).colorScheme.background.withOpacity(1),
+                width: double.infinity,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

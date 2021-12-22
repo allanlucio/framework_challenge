@@ -27,8 +27,11 @@ class CartItemTile extends StatelessWidget {
       padding: const EdgeInsets.only(top: 10),
       child: Row(
         children: [
-          ProductContainer(height: _itemHeight, product: item.product),
-          Expanded(
+          Flexible(
+              child:
+                  ProductContainer(height: _itemHeight, product: item.product)),
+          Flexible(
+            flex: 2,
             child: Container(
               height: _itemHeight,
               color: Theme.of(context).colorScheme.primary.withOpacity(0.5),
