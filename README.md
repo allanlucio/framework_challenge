@@ -18,7 +18,7 @@ A autenticação é **FAKE**, ou seja apenas duas constantes com o valor esperad
 
 `Usuario: admin@fruit_shop.com`
 
-`Senha: insecurepassword`
+`Senha: password`
 
 ## Instruções para execução
 
