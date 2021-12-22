@@ -8,14 +8,14 @@ List productsDatabase() => [
       },
       {
         "name": "Maçã",
-        "description": "A Maça é uma fruta doce e deliciosa.",
+        "description": "A Maçã é uma fruta doce e deliciosa.",
         "price": 4.50,
         "imageUrl": "assets/fruits/apple.png"
       },
       {
         "name": "Pêra",
         "description":
-            "A Descrição de uma pera, nada melhor que ver sua imagem.",
+            "A pera (pré-AO 1990: pêra) é o fruto comestível da pereira, uma árvore do gênero Pyrus L., pertencente à família Rosaceae, e que conta com vinte variedades de espécies cultivadas em todo o mundo[1]. A fruta pode ser consumida in natura, enlatada, em suco e desidratada[2].",
         "price": 3.50,
         "imageUrl": "assets/fruits/pear.png"
       },
