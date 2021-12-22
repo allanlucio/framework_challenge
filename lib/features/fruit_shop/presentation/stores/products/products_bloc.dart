@@ -21,9 +21,13 @@ class ProductsBloc extends Bloc<ProductsEvent, ProductsState> {
       resultEither.fold(
         (l) => emit(const ProductsState.error(
             message: PRODUCTS_SEARCH_FAILURE_MESSAGE)),
-        (products) => emit(
-          ProductsState.loaded(products: products),
-        ),
+        (products) {
+          if (products.isNotEmpty) {
+            emit(ProductsState.loaded(products: products));
+          } else {
+            emit(ProductsState.empty());
+          }
+        },
       );
     });
   }

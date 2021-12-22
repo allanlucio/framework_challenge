@@ -24,6 +24,13 @@ class SearchTextField extends StatelessWidget {
           hintText: "Clique para pesquisar...",
           fillColor: Colors.white,
           prefixIcon: Icon(Icons.search),
+          suffixIcon: Tooltip(
+            message: "Limpar busca",
+            child: IconButton(
+              icon: Icon(Icons.clear),
+              onPressed: _onClearSearchPressed,
+            ),
+          ),
           filled: true,
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(12),
@@ -32,5 +39,10 @@ class SearchTextField extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void _onClearSearchPressed() {
+    _searchController.clear();
+    onChanged("");
   }
 }

@@ -57,6 +57,17 @@ main() {
           ]));
       bloc.add(const ProductsEvent.searchProducts(query: tQuery));
     });
+    test("should emit[Loading, Empty] when the products result are empty",
+        () async {
+      when(mockSearchProductUseCase(query: anyNamed("query")))
+          .thenAnswer((_) async => const Right([]));
+
+      expectLater(
+          bloc.stream,
+          emitsInOrder(
+              [const ProductsState.loading(), const ProductsState.empty()]));
+      bloc.add(const ProductsEvent.searchProducts(query: tQuery));
+    });
     test(
         "should emit[Loading, Error] with the proper message when the usecase fail",
         () async {

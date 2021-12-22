@@ -41,7 +41,17 @@ class _CartPageState extends State<CartPage> {
                 children: [
                   Flexible(
                     flex: 12,
-                    child: CartList(cart: cart, cartBloc: cartBloc),
+                    child: cart.items.isNotEmpty
+                        ? CartList(cart: cart, cartBloc: cartBloc)
+                        : Container(
+                            child: Center(
+                              child: Text(
+                                "Seu carrinho ainda está vazio!",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold, fontSize: 16),
+                              ),
+                            ),
+                          ),
                   ),
                   Divider(thickness: 1),
                   Flexible(flex: 1, child: TotalPrice(totalPrice: cart.total)),

@@ -41,7 +41,12 @@ class HomeBody extends StatelessWidget {
                   },
                 ),
             loading: () => Center(child: CircularProgressIndicator()),
-            orElse: () => Text("Nenhum produto encontrado"));
+            orElse: () => Center(
+                child: Text("Nenhum produto encontrado para esta busca.",
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.bold,
+                    ))));
       },
     );
   }
