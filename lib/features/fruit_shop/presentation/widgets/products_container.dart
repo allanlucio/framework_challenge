@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/extensions/double_extensions.dart';
 import '../../domain/entities/product_entity.dart';
 
 class ProductContainer extends StatelessWidget {
@@ -27,21 +28,45 @@ class ProductContainer extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Container(
-              height: height * 0.85,
-              width: width,
-              child: Hero(
-                tag: product.name,
-                child: Image.asset(
-                  product.imageUrl,
-                  fit: BoxFit.contain,
+            Flexible(
+              flex: 10,
+              child: Container(
+                width: width,
+                child: Hero(
+                  tag: product.name,
+                  child: Image.asset(
+                    product.imageUrl,
+                    fit: BoxFit.contain,
+                  ),
                 ),
               ),
             ),
-            Text(
-              product.name,
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
+            Divider(
+              height: 10,
+              thickness: 0.4,
+            ),
+            Flexible(
+              flex: 5,
+              child: Container(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      product.name,
+                      style: TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      product.price.toBRLString(),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
