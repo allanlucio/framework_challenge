@@ -2,13 +2,14 @@ List productsDatabase() => [
       {
         "name": "Manga",
         "description":
-            "A manga é uma fruta refrescante, doce e muito saborosa.",
+            "A manga é o fruto da mangueira (Mangifera indica L.), árvore frutífera da família Anacardiaceae, nativa do sul e do sudeste asiático[1] desde o leste da Índia até as Filipinas, e introduzida com sucesso no Brasil, em Angola, em Moçambique, Portugal e Espanha.",
         "price": 1.50,
         "imageUrl": "assets/fruits/mango.png"
       },
       {
         "name": "Maçã",
-        "description": "A Maçã é uma fruta doce e deliciosa.",
+        "description":
+            "A maçã é o pseudofruto pomáceo da macieira (Malus domestica), árvore da família Rosaceae. É um dos pseudofrutos de árvore mais cultivados, e o mais conhecido dos muitos membros do género Malus que são usados ​​pelos seres humanos. As maçãs crescem em pequenas árvores, de folha caducifólia que florescem na Primavera e produzem fruto no Outono. ",
         "price": 4.50,
         "imageUrl": "assets/fruits/apple.png"
       },
@@ -22,14 +23,14 @@ List productsDatabase() => [
       {
         "name": "Abacaxi",
         "description":
-            "O Abacaxi é uma fruta tropical, pode ser azedo, doce ou ambos.",
+            "O ananás[1] ou abacaxi[2][nota 1] (Ananas comosus) é uma infrutescência tropical produzida pela planta de mesmo nome, caracterizada como uma planta monocotiledônea da família das bromeliáceas da subfamília Bromelioideae.[3] É um símbolo das regiões tropicais e subtropicais.[4] Os abacaxizeiros cultivados pertencem à espécie Ananas comosus, que compreende muitas variedades frutíferas. Há também várias espécies selvagens, pertencentes ao mesmo gênero. O fruto, quando maduro, tem o sabor bastante ácido e, muitas vezes, adocicado.",
         "price": 8.50,
         "imageUrl": "assets/fruits/pineapple.png"
       },
       {
         "name": "Banana",
         "description":
-            "A Banana é uma fruta ótima para a saúde, dizem que previne câimbra.",
+            "Banana, pacoba ou pacova[1] é uma pseudobaga da bananeira, uma planta herbácea vivaz acaule da família Musaceae (género Musa - além do género Ensete, que produz as chamadas \"falsas bananas\"). São cultivadas em 130 países. Originárias do sudeste da Ásia são atualmente cultivadas em praticamente todas as regiões tropicais do planeta.",
         "price": 7.50,
         "imageUrl": "assets/fruits/banana.png"
       }
