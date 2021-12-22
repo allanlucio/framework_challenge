@@ -21,6 +21,7 @@ class _LoginPageState extends ModularState<LoginPage, AuthCubit> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final emailController = TextEditingController(text: "");
   final passwordController = TextEditingController(text: "");
+  bool _hidePassword = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +68,13 @@ class _LoginPageState extends ModularState<LoginPage, AuthCubit> {
                       TextFieldDS(
                         controller: passwordController,
                         labelText: "Senha",
-                        obscureText: true,
+                        obscureText: _hidePassword,
+                        suffixIcon: IconButton(
+                          icon: Icon(_hidePassword? Icons.visibility: Icons.visibility_off),
+                          onPressed: () => setState(() {
+                            _hidePassword = !_hidePassword;
+                          }),
+                        ),
                         validator: (text) => text != null && text.isEmpty
                             ? "Campo obrigatório"
                             : null,

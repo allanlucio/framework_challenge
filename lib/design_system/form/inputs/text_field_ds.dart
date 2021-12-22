@@ -11,7 +11,8 @@ class TextFieldDS extends StatelessWidget {
   final String labelText;
   final String? errorText;
   final List<TextInputFormatter>? formatters;
-  final Icon? preffixIcon;
+  final Widget? preffixIcon;
+  final Widget? suffixIcon;
   TextFieldDS(
       {Key? key,
       this.validator,
@@ -22,7 +23,8 @@ class TextFieldDS extends StatelessWidget {
       this.obscureText = false,
       this.errorText,
       this.formatters,
-      this.preffixIcon})
+      this.preffixIcon,
+      this.suffixIcon})
       : super(key: key);
 
   @override
@@ -40,6 +42,7 @@ class TextFieldDS extends StatelessWidget {
         fillColor: Colors.white,
         filled: true,
         prefixIcon: preffixIcon,
+        suffixIcon: suffixIcon,
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(15),
           borderSide: BorderSide(color: Colors.black26),
