@@ -31,6 +31,7 @@ class ProductContainer extends StatelessWidget {
             Flexible(
               flex: 10,
               child: Container(
+                padding: EdgeInsets.all(5),
                 width: width,
                 child: Hero(
                   tag: product.name,
@@ -54,14 +55,14 @@ class ProductContainer extends StatelessWidget {
                     Text(
                       product.name,
                       style: TextStyle(
-                        fontSize: 15,
+                        fontSize: height / 12 + 2,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
                       product.price.toBRLString(),
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: height / 12,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
